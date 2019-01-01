@@ -28,9 +28,9 @@ common_helper.sign = async (plainObject) => {
 common_helper.count = async (model, condition = {}) => {
   try {
     let data = await model.countDocuments(condition);
-    return { status: 1, messsage: "Data found", data };
+    return { status: 1, message: "Data found", data };
   } catch (error) {
-    return { status: 0, messsage: "No data found" };
+    return { status: 0, message: "No data found" };
   }
 };
 
@@ -44,9 +44,9 @@ common_helper.insert = async (Model, newData) => {
   try {
     let document = new Model(newData);
     let data = await document.save();
-    return { status: 1, messsage: "Data inserted", data };
+    return { status: 1, message: "Data inserted", data };
   } catch (error) {
-    return { status: 0, messsage: "No data inserted" };
+    return { status: 0, message: "No data inserted" };
   }
 };
 
@@ -59,9 +59,9 @@ common_helper.insert = async (Model, newData) => {
 common_helper.insertMany = async (Model, newData) => {
   try {
     let data = await Model.insertMany(newData);
-    return { status: 1, messsage: "Data inserted", data };
+    return { status: 1, message: "Data inserted", data };
   } catch (error) {
-    return { status: 0, messsage: "No data inserted" };
+    return { status: 0, message: "No data inserted" };
   }
 };
 
@@ -75,9 +75,9 @@ common_helper.insertMany = async (Model, newData) => {
 common_helper.update = async (model, condition, newData) => {
   try {
     let data = await model.findOneAndUpdate(condition, newData, { new: true });
-    return { status: 1, messsage: "Data updated", data };
+    return { status: 1, message: "Data updated", data };
   } catch (error) {
-    return { status: 0, messsage: "No data updated" };
+    return { status: 0, message: "No data updated" };
   }
 };
 
@@ -90,9 +90,9 @@ common_helper.update = async (model, condition, newData) => {
 common_helper.softDelete = async (model, condition) => {
   try {
     let data = await model.findOneAndUpdate(condition, { isDeleted: 1 }, { new: true });
-    return { status: 1, messsage: "Data deleted", data };
+    return { status: 1, message: "Data deleted", data };
   } catch (error) {
-    return { status: 0, messsage: "No data deleted" };
+    return { status: 0, message: "No data deleted" };
   }
 };
 
@@ -106,9 +106,9 @@ common_helper.softDelete = async (model, condition) => {
 common_helper.delete = async (model, condition) => {
   try {
     let data = await model.findOneAndDelete(condition);
-    return { status: 1, messsage: "Data deleted", data };
+    return { status: 1, message: "Data deleted", data };
   } catch (error) {
-    return { status: 0, messsage: "No data deleted" };
+    return { status: 0, message: "No data deleted" };
   }
 };
 
@@ -122,9 +122,9 @@ common_helper.delete = async (model, condition) => {
 common_helper.find = async (model, condition = {}) => {
   try {
     let data = await model.find(condition).lean();
-    return { status: 1, messsage: "Data found", data };
+    return { status: 1, message: "Data found", data };
   } catch (error) {
-    return { status: 0, messsage: "No data found" };
+    return { status: 0, message: "No data found" };
   }
 };
 
@@ -138,9 +138,9 @@ common_helper.find = async (model, condition = {}) => {
 common_helper.findOne = async (model, condition = {}) => {
   try {
     let data = await model.findOne(condition).lean();
-    return { status: 1, messsage: "Data found", data };
+    return { status: 1, message: "Data found", data };
   } catch (error) {
-    return { status: 0, messsage: "No data found" };
+    return { status: 0, message: "No data found" };
   }
 };
 
@@ -183,13 +183,13 @@ common_helper.upload = (files, dir, name = "") => {
             next();
           }
         }, function () {
-          resolve({ status: 1, messsage: `Image uploaded`, data: file_path_list });
+          resolve({ status: 1, message: `Image uploaded`, data: file_path_list });
         });
       } else {
-        reject({ status: 0, messsage: "No Image selected" });
+        reject({ status: 0, message: "No Image selected" });
       }
     } catch (error) {
-      reject({ status: 0, messsage: "No Image selected" });
+      reject({ status: 0, message: "No Image selected" });
     }
   });
   return promise;
